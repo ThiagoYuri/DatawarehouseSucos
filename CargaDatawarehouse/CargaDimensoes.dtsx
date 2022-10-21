@@ -11,8 +11,8 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="CargaDimensoes"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{846F7750-971A-4832-A809-4A32E5DA751B}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{45A8EDEC-574D-4411-8D78-F4775362F54A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,12 +25,507 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-N51LB16;Initial Catalog=DW_SUCOS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=LAPTOP-I9LM3CSP;Initial Catalog=DW_SUCOS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-CargaDimensoes-{2C5C0AD2-B5E1-4CB9-92E4-EF7783C6F39B}Conexão com o Datawarehouse;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{4C36C9EC-280E-48A0-95FE-2BED8AFF87CB}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\thiag\Desktop\Programação\GitHub\DatawarehouseSucos\outros\Arquivos - Aula 2\CADASTRO DE CLIENTES.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{8A5746D8-68AC-47AB-99A9-42629A50DF16}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\thiag\Desktop\Programação\GitHub\DatawarehouseSucos\outros\exel\CADASTRO DE CLIENTES.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Criação da dimensão Cliente"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarefa Fluxo de Dados"
+      DTS:DTSID="{9D51D430-6F32-4562-9820-F1A72BC7699F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Criação da dimensão Cliente"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Criação da dimensão Cliente\Coluna Derivada"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+              description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+              name="Coluna Derivada"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Criação da dimensão Cliente\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+                  description="Entrada para a Transformação Coluna Derivada"
+                  name="Entrada de Coluna Derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Criação da dimensão Cliente\Coluna Derivada.Outputs[Saída de Coluna Derivada]"
+                  description="Saída Padrão da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  name="Saída de Coluna Derivada"
+                  synchronousInputId="Package\Criação da dimensão Cliente\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Criação da dimensão Cliente\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada]"
+                  description="Saída de Erro da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Coluna Derivada"
+                  synchronousInputId="Package\Criação da dimensão Cliente\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Criação da dimensão Cliente\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Criação da dimensão Cliente\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+              description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+              name="Extração da Cidade e do Estado separados"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Inputs[Entrada de Coluna Derivada]"
+                  description="Entrada para a Transformação Coluna Derivada"
+                  name="Entrada de Coluna Derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Inputs[Entrada de Coluna Derivada].Columns[CIDADE_ESTADO]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CIDADE_ESTADO"
+                      lineageId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Coluna Derivada].Columns[CIDADE_ESTADO]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Coluna Derivada]"
+                  description="Saída Padrão da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  name="Saída de Coluna Derivada"
+                  synchronousInputId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Coluna Derivada].Columns[Cidade]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computação"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Coluna Derivada].Columns[Cidade]"
+                      name="Cidade"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão de Coluna Derivada"
+                          name="Expression">[SUBSTRING](#{Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Coluna Derivada].Columns[CIDADE_ESTADO]},1,[FINDSTRING](#{Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Coluna Derivada].Columns[CIDADE_ESTADO]},"-",1) - 2)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão Amigável de Coluna Derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(CIDADE_ESTADO,1,FINDSTRING(CIDADE_ESTADO,"-",1) - 2)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Coluna Derivada].Columns[Estado]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computação"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Coluna Derivada].Columns[Estado]"
+                      name="Estado"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão de Coluna Derivada"
+                          name="Expression">[SUBSTRING](#{Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Coluna Derivada].Columns[CIDADE_ESTADO]},[FINDSTRING](#{Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Coluna Derivada].Columns[CIDADE_ESTADO]},"-",1) + 2,50)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão Amigável de Coluna Derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(CIDADE_ESTADO,FINDSTRING(CIDADE_ESTADO,"-",1) + 2,50)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Erro de Coluna Derivada]"
+                  description="Saída de Erro da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Coluna Derivada"
+                  synchronousInputId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+              description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+              name="Extração de Cidade e Estado juntos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Inputs[Entrada de Coluna Derivada]"
+                  description="Entrada para a Transformação Coluna Derivada"
+                  name="Entrada de Coluna Derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Inputs[Entrada de Coluna Derivada].Columns[ENDERECO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ENDERECO"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[ENDERECO]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Coluna Derivada]"
+                  description="Saída Padrão da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  name="Saída de Coluna Derivada"
+                  synchronousInputId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Coluna Derivada].Columns[CIDADE_ESTADO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computação"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Coluna Derivada].Columns[CIDADE_ESTADO]"
+                      name="CIDADE_ESTADO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão de Coluna Derivada"
+                          name="Expression">[SUBSTRING](#{Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[ENDERECO]},[FINDSTRING](#{Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[ENDERECO]},"-",1) + 2,50)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão Amigável de Coluna Derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(ENDERECO,FINDSTRING(ENDERECO,"-",1) + 2,50)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Erro de Coluna Derivada]"
+                  description="Saída de Erro da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Coluna Derivada"
+                  synchronousInputId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Criação da dimensão Cliente\Planilha de Clientes"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origem do Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+              description="Origem do Excel"
+              name="Planilha de Clientes"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset">CLIENTES$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="A variável que contém o comando SQL a ser executado."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="O mapeamento de parâmetros no comando SQL para variáveis."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel]"
+                  name="Saída de Origem do Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[ID_CLIENTE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[ID_CLIENTE]"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[CLIENTE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[CLIENTE]"
+                      length="255"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[CLIENTE]"
+                      name="CLIENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[ENDERECO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[ENDERECO]"
+                      length="255"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[ENDERECO]"
+                      name="ENDERECO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[VENDEDOR]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[VENDEDOR]"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[VENDEDOR]"
+                      name="VENDEDOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[NOME VENDEDOR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[NOME VENDEDOR]"
+                      length="255"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[NOME VENDEDOR]"
+                      name="NOME VENDEDOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[SEGMENTO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[SEGMENTO]"
+                      length="255"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].Columns[SEGMENTO]"
+                      name="SEGMENTO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[ID_CLIENTE]"
+                      dataType="r8"
+                      name="ID_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[CLIENTE]"
+                      dataType="wstr"
+                      length="255"
+                      name="CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[ENDERECO]"
+                      dataType="wstr"
+                      length="255"
+                      name="ENDERECO" />
+                    <externalMetadataColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[VENDEDOR]"
+                      dataType="r8"
+                      name="VENDEDOR" />
+                    <externalMetadataColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[NOME VENDEDOR]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOME VENDEDOR" />
+                    <externalMetadataColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel].ExternalColumns[SEGMENTO]"
+                      dataType="wstr"
+                      length="255"
+                      name="SEGMENTO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel]"
+                  isErrorOut="true"
+                  name="Saída de Erro de Origem do Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ID_CLIENTE]"
+                      dataType="r8"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[CLIENTE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[CLIENTE]"
+                      name="CLIENTE" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ENDERECO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ENDERECO]"
+                      name="ENDERECO" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[VENDEDOR]"
+                      dataType="r8"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[VENDEDOR]"
+                      name="VENDEDOR" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[NOME VENDEDOR]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[NOME VENDEDOR]"
+                      name="NOME VENDEDOR" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[SEGMENTO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[SEGMENTO]"
+                      name="SEGMENTO" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Erro de Origem do Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Criação da dimensão Cliente.Paths[Saída de Coluna Derivada]"
+              endId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Inputs[Entrada de Coluna Derivada]"
+              name="Saída de Coluna Derivada"
+              startId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Outputs[Saída de Coluna Derivada]" />
+            <path
+              refId="Package\Criação da dimensão Cliente.Paths[Saída de Coluna Derivada1]"
+              endId="Package\Criação da dimensão Cliente\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+              name="Saída de Coluna Derivada"
+              startId="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados.Outputs[Saída de Coluna Derivada]" />
+            <path
+              refId="Package\Criação da dimensão Cliente.Paths[Saída de Origem do Excel]"
+              endId="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos.Inputs[Entrada de Coluna Derivada]"
+              name="Saída de Origem do Excel"
+              startId="Package\Criação da dimensão Cliente\Planilha de Clientes.Outputs[Saída de Origem do Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Criação da Dimensão Fábrica"
       DTS:CreationName="Microsoft.Pipeline"
@@ -853,6 +1348,10 @@ SELECT'003' AS CODIGO, 'Fáb. do Nordeste' AS DESCRITOR</property>
           Size="214.4,41.6"
           Id="Package\Criação da Dimensão Fábrica"
           TopLeft="51,57" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Criação da dimensão Cliente"
+          TopLeft="348.571434507565,53.5294125154357" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1077,6 +1576,151 @@ SELECT'003' AS CODIGO, 'Fáb. do Nordeste' AS DESCRITOR</property>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Criação da dimensão Cliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\Criação da dimensão Cliente\Planilha de Clientes"
+          TopLeft="89,46" />
+        <NodeLayout
+          Size="202.4,61.6"
+          Id="Package\Criação da dimensão Cliente\Extração de Cidade e Estado juntos"
+          TopLeft="319,46" />
+        <EdgeLayout
+          Id="Package\Criação da dimensão Cliente.Paths[Saída de Origem do Excel]"
+          TopLeft="258.6,66.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.4,9.99999999999996"
+              Start="0,0"
+              End="52.9,9.99999999999996">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="26.2,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.2,0"
+                    Point2="30.2,0"
+                    Point3="30.2,4" />
+                  <mssgle:LineSegment
+                    End="30.2,5.99999999999996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.2,5.99999999999996"
+                    Point2="30.2,9.99999999999996"
+                    Point3="34.2,9.99999999999996" />
+                  <mssgle:LineSegment
+                    End="52.9,9.99999999999996" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="22.2,-22,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="279.2,41.6"
+          Id="Package\Criação da dimensão Cliente\Extração da Cidade e do Estado separados"
+          TopLeft="263,186" />
+        <EdgeLayout
+          Id="Package\Criação da dimensão Cliente.Paths[Saída de Coluna Derivada]"
+          TopLeft="420.2,107.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.6,78.4"
+              Start="0,0"
+              End="-17.6,70.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.2"
+                    Point2="0,39.2"
+                    Point3="-4,39.2" />
+                  <mssgle:LineSegment
+                    End="-13.6,39.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.6,39.2"
+                    Point2="-17.6,39.2"
+                    Point3="-17.6,43.2" />
+                  <mssgle:LineSegment
+                    End="-17.6,70.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-16.8,44.2,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Criação da dimensão Cliente\Coluna Derivada"
+          TopLeft="363,323" />
+        <EdgeLayout
+          Id="Package\Criação da dimensão Cliente.Paths[Saída de Coluna Derivada1]"
+          TopLeft="402.6,227.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="38,95.4000000000001"
+              Start="0,0"
+              End="38,87.9000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.7"
+                    Point2="0,47.7"
+                    Point3="4,47.7" />
+                  <mssgle:LineSegment
+                    End="34,47.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34,47.7"
+                    Point2="38,47.7"
+                    Point3="38,51.7" />
+                  <mssgle:LineSegment
+                    End="38,87.9000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="11,52.7,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Criação da dimensão Cliente\Planilha de Clientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
